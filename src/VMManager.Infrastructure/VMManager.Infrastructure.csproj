@@ -1,9 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <!--
-    VMManager.Infrastructure.csproj
-    Implements persistence, job scheduling, and host/DI infrastructure for VMManager.
-    Maintained by Amir & ChatGPT upgrade, May 2025.
-  -->
+
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
@@ -11,7 +7,6 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <RootNamespace>VMManager.Infrastructure</RootNamespace>
-    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,4 +27,5 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
   </ItemGroup>
+
 </Project>

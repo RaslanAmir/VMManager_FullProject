@@ -1,9 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <!--
-    VMManager.Services.csproj
-    Service implementations for VMManager (PowerShell, scheduling, DI, etc).
-    Maintained by Amir & ChatGPT upgrade, May 2025.
-  -->
+
   <PropertyGroup>
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
@@ -11,7 +7,6 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <RootNamespace>VMManager.Services</RootNamespace>
-    <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -47,4 +42,5 @@
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="6.1.2" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.4" />
   </ItemGroup>
+
 </Project>

@@ -1,29 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <!--
-    VMManager.Tests.Infrastructure.csproj
-    Unit/integration tests for VMManager.Infrastructure (Quartz, LiteDB, etc).
-    Maintained by Amir & ChatGPT, May 2025.
-  -->
+
   <PropertyGroup>
+    <!-- Target .NET 8 for tests -->
     <TargetFramework>net8.0-windows</TargetFramework>
     <IsPackable>false</IsPackable>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <LangVersion>latest</LangVersion>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Test frameworks -->
-    <PackageReference Include="xunit" Version="2.6.3" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.6.3" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
-    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <!-- xUnit test framework -->
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Projects under test -->
+    <!-- Reference the Infrastructure library -->
     <ProjectReference Include="..\VMManager.Infrastructure\VMManager.Infrastructure.csproj" />
   </ItemGroup>
+
 </Project>

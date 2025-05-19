@@ -1,17 +1,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <!--
-    VMManager.Common.csproj
-    Common config, logging, and shared logic for VMManager.
-    Maintained by Amir & ChatGPT, May 2025.
-  -->
+
   <PropertyGroup>
+    <!-- Target .NET 8 with nullable and implicit usings -->
     <TargetFramework>net8.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>VMManager.Common</RootNamespace>
     <LangVersion>latest</LangVersion>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <!-- Optional: Enforce strict build behavior -->
     <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
   </PropertyGroup>
@@ -31,6 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- Project-level dependency on shared model definitions -->
     <ProjectReference Include="..\VMManager.Models\VMManager.Models.csproj" />
   </ItemGroup>
+
 </Project>

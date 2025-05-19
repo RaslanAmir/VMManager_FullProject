@@ -1,9 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <!--
-    VMManager.Core.csproj
-    Core business logic, theme, and infrastructure managers for VMManager.
-    Maintained by Amir & ChatGPT, May 2025.
-  -->
+
   <PropertyGroup>
     <!-- ✅ .NET 8 + full safety features -->
     <TargetFramework>net8.0-windows</TargetFramework>
@@ -11,18 +7,13 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <RootNamespace>VMManager.Core</RootNamespace>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
     <!-- Optional: Uncomment to enforce code quality -->
     <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Core project dependencies -->
-
-    <ProjectReference Include="..\..\src\VMManager.Models\VMManager.Models.csproj" />
-    <ProjectReference Include="..\..\src\VMManager.Common\VMManager.Common.csproj" />
-    <ProjectReference Include="..\..\src\VMManager.Services.Interfaces\VMManager.Services.Interfaces.csproj" />
+    <!-- ✅ Internal project reference to shared models -->
+    <ProjectReference Include="..\VMManager.Models\VMManager.Models.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,4 +33,5 @@
     <!-- 💾 Embedded NoSQL document DB -->
     <PackageReference Include="LiteDB" Version="5.0.21" />
   </ItemGroup>
+
 </Project>

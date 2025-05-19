@@ -1,31 +1,25 @@
 <Project Sdk="Microsoft.NET.Sdk">
-  <!--
-    VMManager.Tests.Application.csproj
-    Unit/integration tests for VMManager.Application services.
-    Maintained by Amir & ChatGPT, May 2025.
-  -->
+
   <PropertyGroup>
+    <!-- Target .NET 8 for tests -->
     <TargetFramework>net8.0-windows</TargetFramework>
     <IsPackable>false</IsPackable>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <LangVersion>latest</LangVersion>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
-    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <!-- Test framework & runners -->
-    <PackageReference Include="xunit" Version="2.6.3" />
-    <PackageReference Include="xunit.runner.visualstudio" Version="2.6.3" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.10.0" />
-    <PackageReference Include="Moq" Version="4.20.70" />
-    <PackageReference Include="coverlet.collector" Version="6.0.0" />
+    <!-- Test framework -->
+    <PackageReference Include="xunit" Version="2.4.2" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
+    <PackageReference Include="Moq" Version="4.18.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <!-- Projects under test -->
+    <!-- References under test -->
     <ProjectReference Include="..\VMManager.Application\VMManager.Application.csproj" />
     <ProjectReference Include="..\VMManager.Core\VMManager.Core.csproj" />
   </ItemGroup>
+
 </Project>
