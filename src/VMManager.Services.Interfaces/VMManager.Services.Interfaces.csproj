@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RootNamespace>VMManager.Services.Interfaces</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Needed for Host, IFileRepository, other shared types -->
+    <ProjectReference Include="..\VMManager.Models\VMManager.Models.csproj" />
+
+    <ProjectReference Include="..\VMManager.Common\VMManager.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Ensure logger interface is available -->
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,45 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    VMManager.Core.csproj
+    Core business logic, theme, and infrastructure managers for VMManager.
+    Maintained by Amir & ChatGPT, May 2025.
+  -->
+  <PropertyGroup>
+    <!-- ✅ .NET 8 + full safety features -->
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>VMManager.Core</RootNamespace>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <!-- Optional: Uncomment to enforce code quality -->
+    <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Core project dependencies -->
+
+    <ProjectReference Include="..\..\src\VMManager.Models\VMManager.Models.csproj" />
+    <ProjectReference Include="..\..\src\VMManager.Common\VMManager.Common.csproj" />
+    <ProjectReference Include="..\..\src\VMManager.Services.Interfaces\VMManager.Services.Interfaces.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 🔧 Legacy compatibility (e.g., ServiceLocator) -->
+    <PackageReference Include="CommonServiceLocator" Version="2.0.7" />
+
+    <!-- 🔧 Dependency Injection + Logging Abstractions -->
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.4" />
+
+    <!-- 🧩 JSON Serialization -->
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+
+    <!-- 🎨 UI Theme Support for WPF -->
+    <PackageReference Include="MaterialDesignThemes" Version="4.3.0" />
+
+    <!-- 💾 Embedded NoSQL document DB -->
+    <PackageReference Include="LiteDB" Version="5.0.21" />
+  </ItemGroup>
+</Project>

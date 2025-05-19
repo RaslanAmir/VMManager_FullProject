@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RootNamespace>VMManager.Application</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Layered architecture dependencies -->
+    <ProjectReference Include="..\VMManager.Common\VMManager.Common.csproj" />
+    <ProjectReference Include="..\VMManager.Core\VMManager.Core.csproj" />
+    <ProjectReference Include="..\VMManager.Models\VMManager.Models.csproj" />
+    <ProjectReference Include="..\VMManager.Services.Interfaces\VMManager.Services.Interfaces.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Dependency injection abstraction -->
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
+  </ItemGroup>
+
+</Project>

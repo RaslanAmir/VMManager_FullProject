@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RootNamespace>VMManager.UI</RootNamespace>
+    <EnableDefaultPageItems>false</EnableDefaultPageItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- 🧰 Core Packages -->
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="System.Collections.Immutable" Version="9.0.4" />
+    <PackageReference Include="System.Text.Encoding.CodePages" Version="9.0.4" />
+  
+  <Reference Include="Wpf.Ui">
+    <HintPath>C:\net9.0-windows10.0.26100.0\Wpf.Ui.dll</HintPath>
+  </Reference>
+  <Reference Include="Wpf.Ui.Abstractions">
+    <HintPath>C:\net9.0-windows10.0.26100.0\Wpf.Ui.Abstractions.dll</HintPath>
+  </Reference>
+  <Reference Include="Wpf.Ui.DependencyInjection">
+    <HintPath>C:\net9.0-windows10.0.26100.0\Wpf.Ui.DependencyInjection.dll</HintPath>
+  </Reference>
+  <Reference Include="Wpf.Ui.SyntaxHighlight">
+    <HintPath>C:\net9.0-windows10.0.26100.0\Wpf.Ui.SyntaxHighlight.dll</HintPath>
+  </Reference>
+  <Reference Include="Wpf.Ui.ToastNotifications">
+    <HintPath>C:\net9.0-windows10.0.26100.0\Wpf.Ui.ToastNotifications.dll</HintPath>
+  </Reference>
+  <Reference Include="Wpf.Ui.Tray">
+    <HintPath>C:\net9.0-windows10.0.26100.0\Wpf.Ui.Tray.dll</HintPath>
+  </Reference>
+
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 🔗 Project References -->
+    <ProjectReference Include="..\VMManager.Common\VMManager.Common.csproj" />
+    <ProjectReference Include="..\VMManager.Core\VMManager.Core.csproj" />
+    <ProjectReference Include="..\VMManager.Models\VMManager.Models.csproj" />
+    <ProjectReference Include="..\VMManager.Application\VMManager.Application.csproj" />
+    <ProjectReference Include="..\VMManager.Services.Interfaces\VMManager.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\VMManager.Services\VMManager.Services.csproj" />
+    <ProjectReference Include="..\VMManager.ViewModels\VMManager.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 🎨 Explicit Resource Inclusions -->
+    <Resource Include="Assets\Icons\spinner.png" />
+    <Page Include="Themes\Theme.xaml" />
+  </ItemGroup>
+
+</Project>

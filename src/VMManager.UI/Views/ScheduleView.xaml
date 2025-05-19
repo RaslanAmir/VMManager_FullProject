@@ -1,0 +1,108 @@
+<ui:UiPage
+    x:Class="VMManager.UI.Views.ScheduleView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.it/wpfui"
+    xmlns:converters="clr-namespace:VMManager.UI.Converters"
+    mc:Ignorable="d"
+    d:DesignWidth="1024"
+    d:DesignHeight="768"
+    Title="Schedule View">
+
+    <ui:UiPage.Resources>
+        <converters:EnumToStringConverter x:Key="EnumToStringConverter" />
+
+        <Style x:Key="JobActionButtonStyle" TargetType="ui:Button">
+            <Setter Property="Width" Value="120" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="Margin" Value="0,0,10,0" />
+        </Style>
+    </ui:UiPage.Resources>
+
+    <Grid Margin="24" RowSpacing="16">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- 🔷 Title -->
+        <ui:TextBlock
+            Text="Scheduled Jobs"
+            FontSize="30"
+            FontWeight="Bold"
+            Margin="0,0,0,10"
+            Foreground="{DynamicResource PrimaryBrush}" />
+
+        <!-- 🟡 Filter and Actions -->
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1"
+                    Spacing="12"
+                    VerticalAlignment="Center"
+                    Margin="0,0,0,10">
+            <ui:ComboBox Width="200"
+                         ItemsSource="{Binding Hosts}"
+                         SelectedItem="{Binding SelectedHost, Mode=TwoWay}" />
+            <ui:ComboBox Width="200"
+                         ItemsSource="{Binding VMs}"
+                         SelectedItem="{Binding SelectedVm, Mode=TwoWay}" />
+            <ui:Button Appearance="Primary"
+                       Icon="Plus"
+                       Content="Add Job"
+                       Command="{Binding AddJobCommand}" />
+            <ui:Button Icon="RotateCcw"
+                       Content="Refresh"
+                       Command="{Binding LoadJobsCommand}" />
+        </StackPanel>
+
+        <!-- 📋 Jobs DataGrid -->
+        <DataGrid Grid.Row="2"
+                  ItemsSource="{Binding Jobs}"
+                  SelectedItem="{Binding SelectedJob}"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  MinRowHeight="34"
+                  Margin="0,0,0,16"
+                  HeadersVisibility="Column"
+                  GridLinesVisibility="Horizontal"
+                  AlternatingRowBackground="{DynamicResource ControlStrongBackgroundBrush}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Host" Binding="{Binding Host}" />
+                <DataGridTextColumn Header="VM" Binding="{Binding VM}" />
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" />
+                <DataGridTextColumn Header="Recurrence" Binding="{Binding Recurrence}" />
+                <DataGridTextColumn Header="Next Run" Binding="{Binding NextRunTime, StringFormat=g}" />
+                <DataGridCheckBoxColumn Header="Enabled" Binding="{Binding IsEnabled}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- ⚙️ Actions -->
+        <StackPanel Grid.Row="3"
+                    Orientation="Horizontal"
+                    Spacing="10"
+                    VerticalAlignment="Center">
+            <ui:Button Content="Edit"
+                       Icon="PencilLine"
+                       Command="{Binding EditJobCommand}"
+                       Style="{StaticResource JobActionButtonStyle}" />
+            <ui:Button Content="Delete"
+                       Icon="Trash2"
+                       Appearance="Danger"
+                       Command="{Binding DeleteJobCommand}"
+                       Style="{StaticResource JobActionButtonStyle}" />
+            <ui:Button Content="Run Now"
+                       Icon="Play"
+                       Appearance="Accent"
+                       Command="{Binding RunNowCommand}"
+                       Style="{StaticResource JobActionButtonStyle}" />
+            <ui:Button Content="Toggle Enabled"
+                       Icon="ToggleRight"
+                       Command="{Binding ToggleEnableCommand}"
+                       Style="{StaticResource JobActionButtonStyle}" />
+        </StackPanel>
+    </Grid>
+</ui:UiPage>

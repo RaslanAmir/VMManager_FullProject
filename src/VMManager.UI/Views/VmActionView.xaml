@@ -1,0 +1,60 @@
+<ui:UiPage x:Class="VMManager.UI.Views.VmActionView"
+           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+           xmlns:ui="http://schemas.lepo.it/wpfui"
+           mc:Ignorable="d"
+           d:DesignHeight="400"
+           d:DesignWidth="800"
+           Title="VM Actions">
+
+    <!-- 🎨 Styles -->
+    <ui:UiPage.Resources>
+        <Style x:Key="VmActionButtonStyle" TargetType="Button">
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Margin" Value="4"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </ui:UiPage.Resources>
+
+    <!-- 🧱 Layout -->
+    <Grid Margin="24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- 🖥️ Host -->
+        <ui:Label Grid.Row="0" Grid.Column="0" Text="Host:" VerticalAlignment="Center"/>
+        <TextBox Grid.Row="0" Grid.Column="1"
+                 Text="{Binding Host, Mode=TwoWay}"
+                 Width="260"
+                 ToolTip="Enter the name or IP of the Hyper-V host"/>
+
+        <!-- 🖥️ VM -->
+        <ui:Label Grid.Row="1" Grid.Column="0" Text="VM Name:" VerticalAlignment="Center" Margin="0,12,0,0"/>
+        <TextBox Grid.Row="1" Grid.Column="1"
+                 Text="{Binding VmName, Mode=TwoWay}"
+                 Width="260"
+                 Margin="0,12,0,0"
+                 ToolTip="Enter the target virtual machine name"/>
+
+        <!-- 🚀 Buttons -->
+        <WrapPanel Grid.Row="2" Grid.ColumnSpan="2" HorizontalAlignment="Center" Margin="0,24,0,0">
+            <Button Content="Start" Command="{Binding StartCommand}" Style="{StaticResource VmActionButtonStyle}" ToolTip="Start the selected VM"/>
+            <Button Content="Stop" Command="{Binding StopCommand}" Style="{StaticResource VmActionButtonStyle}" ToolTip="Gracefully shut down the VM"/>
+            <Button Content="Restart" Command="{Binding RestartCommand}" Style="{StaticResource VmActionButtonStyle}" ToolTip="Restart the virtual machine"/>
+            <Button Content="Export" Command="{Binding ExportCommand}" Style="{StaticResource VmActionButtonStyle}" ToolTip="Export current VM to backup location"/>
+            <Button Content="Restore" Command="{Binding RestoreCommand}" Style="{StaticResource VmActionButtonStyle}" ToolTip="Restore VM from a previous backup"/>
+            <Button Content="Console" Command="{Binding ConnectCommand}" Style="{StaticResource VmActionButtonStyle}" ToolTip="Launch RDP session to the VM"/>
+        </WrapPanel>
+    </Grid>
+</ui:UiPage>

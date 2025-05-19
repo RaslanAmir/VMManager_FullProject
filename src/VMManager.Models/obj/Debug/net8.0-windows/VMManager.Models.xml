@@ -1,0 +1,456 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VMManager.Models</name>
+    </assembly>
+    <members>
+        <member name="T:VMManager.Models.HostDto">
+            <summary>
+            Represents a Hyper-V host with associated metadata and virtual machines.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="F:VMManager.Models.HostDto.hostName">
+            <summary>
+            Display name or identifier of the host.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.HostDto.ipAddress">
+            <summary>
+            IP address or DNS-resolvable name of the host.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.HostDto.isCritical">
+            <summary>
+            Indicates if this host contains critical VMs.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.HostDto.vms">
+            <summary>
+            Collection of virtual machines associated with this host.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.HostDto.isOnline">
+            <summary>
+            Host reachability status.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.HostDto.lastPingTime">
+            <summary>
+            Last known successful ping or contact time.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.HostDto.tags">
+            <summary>
+            Custom tags used for classifying this host.
+            </summary>
+        </member>
+        <member name="M:VMManager.Models.HostDto.Clone">
+            <summary>
+            Creates a deep copy of this <see cref="T:VMManager.Models.HostDto"/>.
+            </summary>
+            <returns>A new instance of <see cref="T:VMManager.Models.HostDto"/> with copied values.</returns>
+        </member>
+        <member name="P:VMManager.Models.HostDto.HostName">
+            <inheritdoc cref="F:VMManager.Models.HostDto.hostName"/>
+        </member>
+        <member name="P:VMManager.Models.HostDto.IpAddress">
+            <inheritdoc cref="F:VMManager.Models.HostDto.ipAddress"/>
+        </member>
+        <member name="P:VMManager.Models.HostDto.IsCritical">
+            <inheritdoc cref="F:VMManager.Models.HostDto.isCritical"/>
+        </member>
+        <member name="P:VMManager.Models.HostDto.Vms">
+            <inheritdoc cref="F:VMManager.Models.HostDto.vms"/>
+        </member>
+        <member name="P:VMManager.Models.HostDto.IsOnline">
+            <inheritdoc cref="F:VMManager.Models.HostDto.isOnline"/>
+        </member>
+        <member name="P:VMManager.Models.HostDto.LastPingTime">
+            <inheritdoc cref="F:VMManager.Models.HostDto.lastPingTime"/>
+        </member>
+        <member name="P:VMManager.Models.HostDto.Tags">
+            <inheritdoc cref="F:VMManager.Models.HostDto.tags"/>
+        </member>
+        <member name="T:VMManager.Models.HostInfo">
+            <summary>
+            Represents metadata about a Hyper-V host, including IP address, criticality,
+            and the list of associated virtual machines. This model is used for configuration
+            persistence, orchestration logic, and job scheduling.
+            </summary>
+        </member>
+        <member name="P:VMManager.Models.HostInfo.HostName">
+            <summary>
+            Gets or sets the name of the host. This must be a valid and resolvable
+            network identifier (DNS or NetBIOS).
+            </summary>
+        </member>
+        <member name="P:VMManager.Models.HostInfo.IpAddress">
+            <summary>
+            Gets or sets the IP address of the host. Optional but used for RDP or UI identification.
+            </summary>
+        </member>
+        <member name="P:VMManager.Models.HostInfo.IsCritical">
+            <summary>
+            Indicates whether the host contains critical VMs that must be shut down last.
+            </summary>
+        </member>
+        <member name="P:VMManager.Models.HostInfo.VirtualMachines">
+            <summary>
+            Gets or sets the list of virtual machine names hosted on this machine.
+            </summary>
+        </member>
+        <member name="T:VMManager.Models.JobType">
+            <summary>
+            Defines the type of VM maintenance job that can be scheduled or executed.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.JobType.Unknown">
+            <summary>
+            Unrecognized or default job type. Used as a fallback when type is undefined.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.JobType.Export">
+            <summary>
+            Represents an export job, typically used to export VM configuration or state.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.JobType.Restore">
+            <summary>
+            Represents a restore job, typically used to restore a VM from a previous backup.
+            </summary>
+        </member>
+        <member name="T:VMManager.Models.RecurrenceType">
+            <summary>
+            Specifies how frequently a scheduled virtual machine maintenance job should recur.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.RecurrenceType.Unknown">
+            <summary>
+            An undefined recurrence type. Used as a fallback or uninitialized state.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.RecurrenceType.OneTime">
+            <summary>
+            Executes the job only once and does not repeat.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.RecurrenceType.Daily">
+            <summary>
+            Repeats the job every 24 hours.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.RecurrenceType.Weekly">
+            <summary>
+            Repeats the job once a week.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.RecurrenceType.Monthly">
+            <summary>
+            Repeats the job monthly on the same calendar day.
+            </summary>
+        </member>
+        <member name="T:VMManager.Models.ScheduledJob">
+            <summary>
+            Represents a scheduled job for a VM operation (export/restore) with optional recurrence.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="F:VMManager.Models.ScheduledJob._id">
+            <summary>
+            Unique identifier of the job.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.ScheduledJob._host">
+            <summary>
+            The Hyper-V host machine name.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.ScheduledJob._vm">
+            <summary>
+            The name of the virtual machine.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.ScheduledJob._type">
+            <summary>
+            Type of job: Export, Restore, etc.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.ScheduledJob._recurrence">
+            <summary>
+            Defines how often the job recurs.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.ScheduledJob._destinationPath">
+            <summary>
+            Path where the VM will be exported to.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.ScheduledJob._sourcePath">
+            <summary>
+            Source path used for restore operations.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.ScheduledJob._nextRunTime">
+            <summary>
+            The next scheduled run time.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.ScheduledJob._lastRunTime">
+            <summary>
+            The last time this job was executed.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.ScheduledJob._isEnabled">
+            <summary>
+            Indicates whether the job is enabled.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.ScheduledJob._isRunning">
+            <summary>
+            True if the job is currently executing.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.ScheduledJob._description">
+            <summary>
+            Optional job description or notes.
+            </summary>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.VM">
+            <summary>
+            Compatibility alias for 'Vm' property used in legacy systems.
+            </summary>
+        </member>
+        <member name="M:VMManager.Models.ScheduledJob.Clone(System.Boolean)">
+            <summary>
+            Creates a deep copy of the job. Optionally generates a new ID.
+            </summary>
+            <param name="generateNewId">If true, a new ID is assigned.</param>
+            <returns>A cloned instance of the job.</returns>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.Id">
+            <inheritdoc cref="F:VMManager.Models.ScheduledJob._id"/>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.Host">
+            <inheritdoc cref="F:VMManager.Models.ScheduledJob._host"/>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.Vm">
+            <inheritdoc cref="F:VMManager.Models.ScheduledJob._vm"/>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.Type">
+            <inheritdoc cref="F:VMManager.Models.ScheduledJob._type"/>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.Recurrence">
+            <inheritdoc cref="F:VMManager.Models.ScheduledJob._recurrence"/>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.DestinationPath">
+            <inheritdoc cref="F:VMManager.Models.ScheduledJob._destinationPath"/>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.SourcePath">
+            <inheritdoc cref="F:VMManager.Models.ScheduledJob._sourcePath"/>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.NextRunTime">
+            <inheritdoc cref="F:VMManager.Models.ScheduledJob._nextRunTime"/>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.LastRunTime">
+            <inheritdoc cref="F:VMManager.Models.ScheduledJob._lastRunTime"/>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.IsEnabled">
+            <inheritdoc cref="F:VMManager.Models.ScheduledJob._isEnabled"/>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.IsRunning">
+            <inheritdoc cref="F:VMManager.Models.ScheduledJob._isRunning"/>
+        </member>
+        <member name="P:VMManager.Models.ScheduledJob.Description">
+            <inheritdoc cref="F:VMManager.Models.ScheduledJob._description"/>
+        </member>
+        <member name="T:VMManager.Models.VMDto">
+            <summary>
+            Represents a virtual machine (VM) managed within a Hyper-V host environment.
+            </summary>
+            <inheritdoc/>
+        </member>
+        <member name="F:VMManager.Models.VMDto.hostName">
+            <summary>
+            The name of the host machine where the virtual machine is hosted.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.VMDto.vmName">
+            <summary>
+            The technical identifier of the virtual machine.
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.VMDto.status">
+            <summary>
+            The current operational status of the VM (e.g., Running, Stopped, Saved).
+            </summary>
+        </member>
+        <member name="F:VMManager.Models.VMDto.isCritical">
+            <summary>
+            Indicates whether the VM is designated as critical.
+            Used to orchestrate shutdown priorities.
+            </summary>
+        </member>
+        <member name="M:VMManager.Models.VMDto.Clone">
+            <summary>
+            Clones the current instance of the virtual machine DTO.
+            </summary>
+            <returns>A deep copy of the current VMDto instance.</returns>
+        </member>
+        <member name="P:VMManager.Models.VMDto.VMName">
+            <summary>
+            Legacy compatibility alias for the VM name (PascalCase for binding/backwards compatibility).
+            </summary>
+        </member>
+        <member name="P:VMManager.Models.VMDto.HostName">
+            <inheritdoc cref="F:VMManager.Models.VMDto.hostName"/>
+        </member>
+        <member name="P:VMManager.Models.VMDto.VmName">
+            <inheritdoc cref="F:VMManager.Models.VMDto.vmName"/>
+        </member>
+        <member name="P:VMManager.Models.VMDto.Status">
+            <inheritdoc cref="F:VMManager.Models.VMDto.status"/>
+        </member>
+        <member name="P:VMManager.Models.VMDto.IsCritical">
+            <inheritdoc cref="F:VMManager.Models.VMDto.isCritical"/>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.HostName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "HostName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IpAddress">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IpAddress" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsCritical">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsCritical" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Vms">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Vms" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsOnline">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsOnline" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.LastPingTime">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "LastPingTime" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Tags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Tags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Id">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Id" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Host">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Host" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Vm">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Vm" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Type">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Type" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Recurrence">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Recurrence" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DestinationPath">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DestinationPath" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SourcePath">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SourcePath" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.NextRunTime">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "NextRunTime" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.LastRunTime">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "LastRunTime" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsEnabled">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsEnabled" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsRunning">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsRunning" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.VmName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "VmName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Status">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Status" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.HostName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "HostName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IpAddress">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IpAddress" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsCritical">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsCritical" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Vms">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Vms" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsOnline">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsOnline" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.LastPingTime">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "LastPingTime" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Tags">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Tags" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Id">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Id" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Host">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Host" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Vm">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Vm" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Type">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Type" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Recurrence">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Recurrence" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DestinationPath">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DestinationPath" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SourcePath">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SourcePath" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.NextRunTime">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "NextRunTime" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.LastRunTime">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "LastRunTime" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsEnabled">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsEnabled" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsRunning">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsRunning" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.VmName">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "VmName" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Status">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Status" generated properties.</summary>
+        </member>
+    </members>
+</doc>

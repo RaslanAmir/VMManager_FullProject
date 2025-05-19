@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    VMManager.Infrastructure.csproj
+    Implements persistence, job scheduling, and host/DI infrastructure for VMManager.
+    Maintained by Amir & ChatGPT upgrade, May 2025.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <RootNamespace>VMManager.Infrastructure</RootNamespace>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Layered architecture references -->
+    <ProjectReference Include="..\VMManager.Core\VMManager.Core.csproj" />
+    <ProjectReference Include="..\VMManager.Common\VMManager.Common.csproj" />
+    <ProjectReference Include="..\VMManager.Models\VMManager.Models.csproj" />
+    <ProjectReference Include="..\VMManager.Services.Interfaces\VMManager.Services.Interfaces.csproj" />
+    <ProjectReference Include="..\VMManager.Application\VMManager.Application.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Background job scheduler & embedded DB -->
+    <PackageReference Include="Quartz" Version="3.6.0" />
+    <PackageReference Include="LiteDB" Version="5.0.21" />
+
+    <!-- Dependency injection / host services -->
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.4" />
+  </ItemGroup>
+</Project>

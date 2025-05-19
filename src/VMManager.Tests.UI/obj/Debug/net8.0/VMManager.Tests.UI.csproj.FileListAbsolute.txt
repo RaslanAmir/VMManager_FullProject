@@ -1,0 +1,5 @@
+C:\Users\amir\Downloads\VMManagerSolution_FullySynced_ModernWpf\src\VMManager.Tests.UI\obj\Debug\net8.0\VMManager.Tests.UI.csproj.AssemblyReference.cache
+C:\Users\amir\Downloads\VMManagerSolution_FullySynced_ModernWpf\src\VMManager.Tests.UI\obj\Debug\net8.0\VMManager.Tests.UI.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\amir\Downloads\VMManagerSolution_FullySynced_ModernWpf\src\VMManager.Tests.UI\obj\Debug\net8.0\VMManager.Tests.UI.AssemblyInfoInputs.cache
+C:\Users\amir\Downloads\VMManagerSolution_FullySynced_ModernWpf\src\VMManager.Tests.UI\obj\Debug\net8.0\VMManager.Tests.UI.AssemblyInfo.cs
+C:\Users\amir\Downloads\VMManagerSolution_FullySynced_ModernWpf\src\VMManager.Tests.UI\obj\Debug\net8.0\VMManager.Tests.UI.csproj.CoreCompileInputs.cache

@@ -1,0 +1,90 @@
+<ui:UiPage
+    x:Class="VMManager.UI.Views.SettingsView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ui="http://schemas.lepo.it/wpfui"
+    mc:Ignorable="d"
+    d:DesignHeight="720"
+    d:DesignWidth="960"
+    Title="Settings">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- 🧭 Page Title -->
+        <ui:Label
+            Text="Settings"
+            FontSize="26"
+            FontWeight="Bold"
+            Foreground="{DynamicResource PrimaryBrush}"
+            Margin="0,0,0,16"/>
+
+        <!-- ⚙️ Settings Form -->
+        <Grid Grid.Row="1" RowSpacing="10" ColumnSpacing="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Language -->
+            <ui:Label Grid.Row="0" Grid.Column="0" Text="Language" VerticalAlignment="Center"/>
+            <ComboBox Grid.Row="0" Grid.Column="1"
+                      ItemsSource="{Binding Languages}"
+                      SelectedItem="{Binding SelectedLanguage, Mode=TwoWay}"
+                      Width="240" />
+
+            <!-- FTP Sync Toggle -->
+            <ui:Label Grid.Row="1" Grid.Column="0" Text="Enable FTP Sync" VerticalAlignment="Center"/>
+            <CheckBox Grid.Row="1" Grid.Column="1"
+                      IsChecked="{Binding EnableFtpSync, Mode=TwoWay}" />
+
+            <!-- FTP Host -->
+            <ui:Label Grid.Row="2" Grid.Column="0" Text="FTP Host" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="2" Grid.Column="1"
+                     Text="{Binding FtpHost, Mode=TwoWay}" Width="300"/>
+
+            <!-- FTP User -->
+            <ui:Label Grid.Row="3" Grid.Column="0" Text="FTP User" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="3" Grid.Column="1"
+                     Text="{Binding FtpUser, Mode=TwoWay}" Width="300"/>
+
+            <!-- FTP Password -->
+            <ui:Label Grid.Row="4" Grid.Column="0" Text="FTP Password" VerticalAlignment="Center"/>
+            <PasswordBox Grid.Row="4" Grid.Column="1"
+                         x:Name="FtpPasswordBox"
+                         Width="300"
+                         PasswordChanged="FtpPasswordBox_PasswordChanged"
+                         ToolTip="Encrypted and saved securely"/>
+
+            <!-- RDP Username -->
+            <ui:Label Grid.Row="5" Grid.Column="0" Text="RDP Username" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="5" Grid.Column="1"
+                     Text="{Binding RdpUsername, Mode=TwoWay}" Width="300"/>
+
+            <!-- RDP Password -->
+            <ui:Label Grid.Row="6" Grid.Column="0" Text="RDP Password" VerticalAlignment="Center"/>
+            <PasswordBox Grid.Row="6" Grid.Column="1"
+                         x:Name="RdpPasswordBox"
+                         Width="300"
+                         PasswordChanged="RdpPasswordBox_PasswordChanged" />
+
+            <!-- Auto-Refresh -->
+            <ui:Label Grid.Row="7" Grid.Column="0" Text="Auto-Refresh Interval (s)" VerticalAlignment="Center"/>
+            <TextBox Grid.Row="7" Grid.Column="1"
+                     Text="{Binding AutoRefreshIntervalSeconds, Mode=TwoWay}" Width="100"/>
+
+            <!-- Save Button -->
+            <Button Grid.Row="8" Grid.Column="1"
+                    Content="💾 Save Settings"
+                    Command="{Binding SaveSettingsCommand}"
+                    HorizontalAlignment="Right"
+                    Width="160"
+                    Margin="0,12,0,0"/>
+        </Grid>
+    </Grid>
+</ui:UiPage>

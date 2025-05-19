@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VMManager.Common</name>
+    </assembly>
+    <members>
+        <member name="T:VMManager.Common.Models.AppSettings">
+            <summary>
+            Represents application-wide persisted user preferences and system settings.
+            </summary>
+        </member>
+        <member name="T:VMManager.Common.Models.HostSettings">
+            <summary>
+            Represents persisted configuration for a Hyper-V host, including hostname,
+            the list of virtual machines it manages, and its criticality status.
+            Used in scheduling, export/restore logic, and settings serialization.
+            </summary>
+        </member>
+        <member name="P:VMManager.Common.Models.HostSettings.HostName">
+            <summary>
+            Gets or sets the unique identifier or network-resolvable name of the host.
+            This can be a NetBIOS name, DNS name, or IP address.
+            </summary>
+        </member>
+        <member name="P:VMManager.Common.Models.HostSettings.VirtualMachines">
+            <summary>
+            Gets or sets the collection of virtual machine names hosted on this Hyper-V host.
+            Used to associate scheduled backup or orchestration logic to specific VMs.
+            </summary>
+        </member>
+        <member name="P:VMManager.Common.Models.HostSettings.IsCritical">
+            <summary>
+            Indicates whether this host is marked as critical in orchestration logic.
+            Critical hosts may have delayed shutdown sequences or restricted operations.
+            </summary>
+        </member>
+        <member name="T:VMManager.Common.Models.RdpSettings">
+            <summary>
+            Stores Remote Desktop Protocol (RDP) credential information for a host.
+            Used for automated remote desktop connection launches.
+            </summary>
+        </member>
+        <member name="P:VMManager.Common.Models.RdpSettings.Username">
+            <summary>
+            Gets or sets the username used when initiating RDP sessions.
+            Typically in the format <c>DOMAIN\\Username</c> or just <c>Username</c>.
+            </summary>
+        </member>
+        <member name="P:VMManager.Common.Models.RdpSettings.EncryptedPassword">
+            <summary>
+            Gets or sets the encrypted password associated with the RDP user.
+            The password should be securely stored and decrypted only at runtime.
+            </summary>
+        </member>
+        <member name="T:VMManager.Common.Services.ConfigService">
+            <summary>
+            Provides access to application configuration settings.
+            </summary>
+        </member>
+        <member name="P:VMManager.Common.Services.ConfigService.AppConfig">
+            <summary>
+            Strongly-typed application configuration model.
+            </summary>
+        </member>
+        <member name="M:VMManager.Common.Services.ConfigService.#ctor">
+            <summary>
+            Initializes the configuration service with bound settings.
+            </summary>
+        </member>
+    </members>
+</doc>

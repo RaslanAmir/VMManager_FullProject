@@ -1,0 +1,33 @@
+<Application
+    x:Class="VMManager.UI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:converters="clr-namespace:VMManager.UI.Converters"
+    xmlns:ui="http://schemas.lepo.it/wpfui">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+
+                <!-- 🎨 Wpf.Ui Default Styles -->
+                <ResourceDictionary Source="pack://application:,,,/Wpf.Ui;component/Styles/Controls.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Wpf.Ui;component/Styles/Fonts.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/Wpf.Ui;component/Styles/Colors.xaml" />
+
+                <!-- 🎨 Optional: Your Custom Overrides -->
+                <ResourceDictionary Source="Themes/Theme.xaml" />
+
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- 🌀 Global Value Converters -->
+            <converters:EnumToStringConverter x:Key="EnumToStringConverter" />
+            <converters:SmartEnumToStringConverter x:Key="SmartEnumToStringConverter" />
+            <converters:BoolToBrushConverter x:Key="BoolToBrushConverter"
+                                             TrueBrush="LimeGreen"
+                                             FalseBrush="Red"
+                                             NullBrush="Gray" />
+            <converters:VmStatusToIconConverter x:Key="StatusToIconConverter" />
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

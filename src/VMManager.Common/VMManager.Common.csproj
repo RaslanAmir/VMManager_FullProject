@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    VMManager.Common.csproj
+    Common config, logging, and shared logic for VMManager.
+    Maintained by Amir & ChatGPT, May 2025.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>VMManager.Common</RootNamespace>
+    <LangVersion>latest</LangVersion>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <!-- Optional: Enforce strict build behavior -->
+    <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Configuration support -->
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.4" />
+
+    <!-- Serilog logging -->
+    <PackageReference Include="Serilog" Version="3.0.0" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
+
+    <!-- Secure settings encryption/decryption -->
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VMManager.Models\VMManager.Models.csproj" />
+  </ItemGroup>
+</Project>
