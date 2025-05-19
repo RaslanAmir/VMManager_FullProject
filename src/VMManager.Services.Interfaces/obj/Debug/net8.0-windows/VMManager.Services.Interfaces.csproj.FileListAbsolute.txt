@@ -1,5 +1,0 @@
-C:\Users\amir\Downloads\VMManager_FinalPackage\src\VMManager.Services.Interfaces\obj\Debug\net8.0-windows\VMManager.Services.Interfaces.csproj.AssemblyReference.cache
-C:\Users\amir\Downloads\VMManager_FinalPackage\src\VMManager.Services.Interfaces\obj\Debug\net8.0-windows\VMManager.Services.Interfaces.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\amir\Downloads\VMManager_FinalPackage\src\VMManager.Services.Interfaces\obj\Debug\net8.0-windows\VMManager.Services.Interfaces.AssemblyInfoInputs.cache
-C:\Users\amir\Downloads\VMManager_FinalPackage\src\VMManager.Services.Interfaces\obj\Debug\net8.0-windows\VMManager.Services.Interfaces.AssemblyInfo.cs
-C:\Users\amir\Downloads\VMManager_FinalPackage\src\VMManager.Services.Interfaces\obj\Debug\net8.0-windows\VMManager.Services.Interfaces.csproj.CoreCompileInputs.cache
