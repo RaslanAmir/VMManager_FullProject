@@ -1,0 +1,382 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VMManager.Services.Interfaces</name>
+    </assembly>
+    <members>
+        <member name="T:VMManager.Services.Interfaces.IBackupScheduler">
+            <summary>
+            Provides scheduling, persistence, and execution for VM backup and restore jobs.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IBackupScheduler.GetScheduledJobsAsync">
+            <summary>
+            Loads all scheduled backup and restore jobs from persistent storage.
+            </summary>
+            <returns>A task that represents the asynchronous operation. The task result contains a list of scheduled jobs.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IBackupScheduler.SaveJobsAsync(System.Collections.Generic.IEnumerable{VMManager.Models.ScheduledJob})">
+            <summary>
+            Saves the current set of scheduled jobs to persistent storage.
+            </summary>
+            <param name="jobs">A collection of jobs to be saved.</param>
+            <returns>A task that represents the asynchronous save operation.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IBackupScheduler.ScheduleBackupAsync(VMManager.Models.HostInfo)">
+            <summary>
+            Schedules a backup for all VMs on the specified host. (Legacy support)
+            </summary>
+            <param name="host">The host for which to schedule a backup.</param>
+            <returns>A task that represents the asynchronous scheduling operation.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IBackupScheduler.RunJobNowAsync(VMManager.Models.ScheduledJob)">
+            <summary>
+            Immediately executes the specified backup or restore job.
+            </summary>
+            <param name="job">The job to run immediately.</param>
+            <returns>A task that represents the asynchronous job execution.</returns>
+        </member>
+        <member name="T:VMManager.Services.Interfaces.IDialogService">
+            <summary>
+            Provides an abstraction for showing dialogs and messages, decoupled from WPF MessageBox.
+            Enables clean separation of UI logic for testing and maintainability.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IDialogService.ShowMessageAsync(System.String,System.String)">
+            <summary>
+            Shows an informational message dialog.
+            </summary>
+            <param name="message">The message to display.</param>
+            <param name="title">The dialog title (optional).</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IDialogService.ShowConfirmationAsync(System.String,System.String)">
+            <summary>
+            Shows a confirmation dialog (Yes/No).
+            </summary>
+            <param name="message">The question to display.</param>
+            <param name="title">The dialog title (optional).</param>
+            <returns>A task that returns true if confirmed, false if canceled.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IDialogService.ShowErrorAsync(System.String,System.String)">
+            <summary>
+            Shows an error dialog.
+            </summary>
+            <param name="message">The error message to display.</param>
+            <param name="title">The dialog title (optional).</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="T:VMManager.Services.Interfaces.IExportRestoreService">
+            <summary>
+            Provides export, restore, and control operations for virtual machines.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IExportRestoreService.ExportVMAsync(System.String,System.String,System.String)">
+            <summary>
+            Exports a specific VM on the given host to the specified destination path.
+            </summary>
+            <param name="host">The Hyper-V host name.</param>
+            <param name="vm">The virtual machine name.</param>
+            <param name="destPath">The destination path for the export.</param>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IExportRestoreService.RestoreVMAsync(System.String,System.String,System.String)">
+            <summary>
+            Restores a specific VM on the given host from the specified source path.
+            </summary>
+            <param name="host">The Hyper-V host name.</param>
+            <param name="vm">The virtual machine name.</param>
+            <param name="sourcePath">The source path of the backup.</param>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IExportRestoreService.StartVMAsync(System.String,System.String)">
+            <summary>
+            Starts the specified VM on the given host.
+            </summary>
+            <param name="host">The Hyper-V host name.</param>
+            <param name="vm">The virtual machine name.</param>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IExportRestoreService.StopVMAsync(System.String,System.String)">
+            <summary>
+            Stops (shuts down) the specified VM on the given host.
+            </summary>
+            <param name="host">The Hyper-V host name.</param>
+            <param name="vm">The virtual machine name.</param>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IExportRestoreService.RestartVMAsync(System.String,System.String)">
+            <summary>
+            Restarts the specified VM on the given host.
+            </summary>
+            <param name="host">The Hyper-V host name.</param>
+            <param name="vm">The virtual machine name.</param>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IExportRestoreService.ConnectConsoleAsync(System.String,System.String)">
+            <summary>
+            Connects to the console of the specified VM on the given host.
+            </summary>
+            <param name="host">The Hyper-V host name.</param>
+            <param name="vm">The virtual machine name.</param>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IExportRestoreService.ExportAllVMsOnHostAsync(System.String)">
+            <summary>
+            Exports all virtual machines on the given host to the default backup location.
+            </summary>
+            <param name="host">The Hyper-V host name.</param>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IExportRestoreService.ExportAllVMsOnHostAsync(System.String,System.String)">
+            <summary>
+            Exports all virtual machines on the given host to the specified backup path.
+            </summary>
+            <param name="host">The Hyper-V host name.</param>
+            <param name="backupPath">The directory to save all VM exports.</param>
+        </member>
+        <member name="T:VMManager.Services.Interfaces.IHostConfigService">
+            <summary>
+            Provides access to saved Hyper-V host configurations used throughout the application.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IHostConfigService.GetHostsAsync">
+            <summary>
+            Gets all configured Hyper-V hosts from the underlying store.
+            </summary>
+            <returns>A task containing a read-only list of <see cref="T:VMManager.Models.HostInfo"/> entries.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IHostConfigService.SaveHostsAsync(System.Collections.Generic.IEnumerable{VMManager.Models.HostInfo})">
+            <summary>
+            Saves the complete list of hosts, overwriting previous data.
+            </summary>
+            <param name="hosts">The collection of hosts to save.</param>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IHostConfigService.AddOrUpdateHostAsync(VMManager.Models.HostInfo)">
+            <summary>
+            Adds a new host or updates the existing one by matching <see cref="P:VMManager.Models.HostInfo.HostName"/>.
+            </summary>
+            <param name="host">The host to add or update.</param>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IHostConfigService.RemoveHostAsync(System.String)">
+            <summary>
+            Removes the host with the specified name.
+            </summary>
+            <param name="hostName">The name of the host to remove.</param>
+        </member>
+        <member name="T:VMManager.Services.Interfaces.IHostManagementService">
+            <summary>
+            Abstraction for managing the lifecycle of Hyper-V host definitions.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IHostManagementService.AddHostAsync(VMManager.Models.HostDto)">
+            <summary>
+            Adds a new host entry to the system.
+            </summary>
+            <param name="host">The host details to be added.</param>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IHostManagementService.UpdateHostAsync(VMManager.Models.HostDto)">
+            <summary>
+            Updates an existing host entry.
+            </summary>
+            <param name="host">The updated host details.</param>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IHostManagementService.RemoveHostAsync(System.String)">
+            <summary>
+            Removes a host from the system based on its unique hostname.
+            </summary>
+            <param name="hostName">The hostname of the host to remove.</param>
+        </member>
+        <member name="T:VMManager.Services.Interfaces.IHostRepository">
+            <summary>
+            Provides asynchronous operations for managing and persisting host configurations.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IHostRepository.GetAllAsync">
+            <summary>
+            Retrieves all saved hosts from the underlying data source.
+            </summary>
+            <returns>A task representing the asynchronous operation, containing a collection of known hosts.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IHostRepository.AddAsync(VMManager.Core.Entities.Host)">
+            <summary>
+            Adds a new host configuration to the repository.
+            </summary>
+            <param name="host">The host entity to be added.</param>
+            <returns>A task representing the asynchronous add operation.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IHostRepository.UpdateAsync(VMManager.Core.Entities.Host)">
+            <summary>
+            Updates an existing host configuration in the repository.
+            </summary>
+            <param name="host">The updated host entity.</param>
+            <returns>A task representing the asynchronous update operation.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IHostRepository.RemoveAsync(System.String)">
+            <summary>
+            Removes a host configuration by its host name.
+            </summary>
+            <param name="hostName">The name of the host to remove.</param>
+            <returns>A task representing the asynchronous delete operation.</returns>
+        </member>
+        <member name="T:VMManager.Services.Interfaces.ILogger">
+            <summary>
+            Simple logging interface for informational, warning, and error messages.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.ILogger.Info(System.String)">
+            <summary>
+            Logs an informational message.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.ILogger.Warn(System.String)">
+            <summary>
+            Logs a warning message.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.ILogger.Error(System.String)">
+            <summary>
+            Logs an error message.
+            </summary>
+        </member>
+        <member name="T:VMManager.Services.Interfaces.IPowerShellService">
+            <summary>
+            Provides asynchronous execution of PowerShell scripts with input parameters.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IPowerShellService.InvokeAsync(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Executes a PowerShell script with the specified named parameters.
+            </summary>
+            <param name="script">The PowerShell script content to execute.</param>
+            <param name="parameters">A dictionary of parameter names and values passed to the script.</param>
+            <returns>
+            A task that represents the asynchronous execution. 
+            The result is a tuple containing:
+            <list type="bullet">
+            <item><description><c>Output</c>: Lines of output produced by the script.</description></item>
+            <item><description><c>Errors</c>: Lines of error messages, if any.</description></item>
+            </list>
+            </returns>
+        </member>
+        <member name="T:VMManager.Services.Interfaces.ISettingsManager">
+            <summary>
+            Manages application settings including localization, FTP configuration, RDP credentials, and persistence.
+            </summary>
+        </member>
+        <member name="P:VMManager.Services.Interfaces.ISettingsManager.Language">
+            <summary>
+            Gets or sets the current application language code (e.g., "en", "hr").
+            </summary>
+        </member>
+        <member name="P:VMManager.Services.Interfaces.ISettingsManager.EnableFtpSync">
+            <summary>
+            Gets or sets whether FTP synchronization is enabled.
+            </summary>
+        </member>
+        <member name="P:VMManager.Services.Interfaces.ISettingsManager.FtpHost">
+            <summary>
+            Gets or sets the FTP server host name or address.
+            </summary>
+        </member>
+        <member name="P:VMManager.Services.Interfaces.ISettingsManager.FtpUser">
+            <summary>
+            Gets or sets the FTP username.
+            </summary>
+        </member>
+        <member name="P:VMManager.Services.Interfaces.ISettingsManager.FtpPassword">
+            <summary>
+            Gets or sets the FTP password.
+            </summary>
+        </member>
+        <member name="P:VMManager.Services.Interfaces.ISettingsManager.RdpUsername">
+            <summary>
+            Gets or sets the RDP username.
+            </summary>
+        </member>
+        <member name="P:VMManager.Services.Interfaces.ISettingsManager.RdpPassword">
+            <summary>
+            Gets or sets the RDP password.
+            </summary>
+        </member>
+        <member name="P:VMManager.Services.Interfaces.ISettingsManager.AutoRefreshIntervalSeconds">
+            <summary>
+            Gets or sets the interval in seconds for auto-refresh operations.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.ISettingsManager.GetSupportedLanguages">
+            <summary>
+            Gets a list of supported language codes for localization (e.g., "en", "hr").
+            </summary>
+            <returns>A list of language codes.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.ISettingsManager.GetHosts">
+            <summary>
+            Gets a list of configured host names.
+            </summary>
+            <returns>A list of host names.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.ISettingsManager.GetVmsForHost(System.String)">
+            <summary>
+            Gets a list of VM names associated with the specified host.
+            </summary>
+            <param name="host">The host name.</param>
+            <returns>A list of VM names for the given host.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.ISettingsManager.GetExportPath">
+            <summary>
+            Gets the default path for exporting virtual machines.
+            </summary>
+            <returns>The export path.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.ISettingsManager.GetRestorePath">
+            <summary>
+            Gets the default path for restoring virtual machines.
+            </summary>
+            <returns>The restore path.</returns>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.ISettingsManager.Save">
+            <summary>
+            Persists current settings to the configuration storage (e.g., JSON file).
+            </summary>
+        </member>
+        <member name="T:VMManager.Services.Interfaces.IVmControlService">
+            <summary>
+            Defines methods to monitor and control virtual machines (VMs) on Hyper-V hosts.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IVmControlService.GetAllVmStatusAsync">
+            <summary>
+            Retrieves status information for all VMs across all configured hosts.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IVmControlService.ShutdownVmAsync(System.String,System.String)">
+            <summary>
+            Initiates a graceful shutdown of the specified VM.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IVmControlService.StartVmAsync(System.String,System.String)">
+            <summary>
+            Starts the specified virtual machine.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IVmControlService.ConnectVmAsync(System.String,System.String)">
+            <summary>
+            Connects to the console session of a specified VM.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IVmControlService.RestartVmAsync(System.String,System.String)">
+            <summary>
+            Performs a forced restart of the specified VM.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IVmControlService.SnapshotVmAsync(System.String,System.String)">
+            <summary>
+            Creates a checkpoint (snapshot) of the specified virtual machine.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IVmControlService.RestoreSnapshotVmAsync(System.String,System.String)">
+            <summary>
+            Restores the latest snapshot for the specified VM.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Interfaces.IVmControlService.ShutdownHostAsync(System.String)">
+            <summary>
+            Initiates shutdown of the entire host machine.
+            </summary>
+        </member>
+    </members>
+</doc>

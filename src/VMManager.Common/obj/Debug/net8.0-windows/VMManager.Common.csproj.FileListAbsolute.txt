@@ -1,0 +1,17 @@
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\bin\Debug\net8.0-windows\VMManager.Common.deps.json
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\bin\Debug\net8.0-windows\VMManager.Common.dll
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\bin\Debug\net8.0-windows\VMManager.Common.pdb
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\bin\Debug\net8.0-windows\VMManager.Models.dll
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\bin\Debug\net8.0-windows\VMManager.Models.pdb
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\bin\Debug\net8.0-windows\VMManager.Models.xml
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\obj\Debug\net8.0-windows\VMManager.Common.csproj.AssemblyReference.cache
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\obj\Debug\net8.0-windows\VMManager.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\obj\Debug\net8.0-windows\VMManager.Common.AssemblyInfoInputs.cache
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\obj\Debug\net8.0-windows\VMManager.Common.AssemblyInfo.cs
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\obj\Debug\net8.0-windows\VMManager.Common.csproj.CoreCompileInputs.cache
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\obj\Debug\net8.0-windows\VMManager.Common.sourcelink.json
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\obj\Debug\net8.0-windows\VMManage.27D9EEA5.Up2Date
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\obj\Debug\net8.0-windows\VMManager.Common.dll
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\obj\Debug\net8.0-windows\refint\VMManager.Common.dll
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\obj\Debug\net8.0-windows\VMManager.Common.pdb
+C:\GitHub\VMManager_FullProject\src\VMManager.Common\obj\Debug\net8.0-windows\ref\VMManager.Common.dll

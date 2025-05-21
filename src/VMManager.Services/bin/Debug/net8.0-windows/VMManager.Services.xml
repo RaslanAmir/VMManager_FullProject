@@ -1,0 +1,279 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VMManager.Services</name>
+    </assembly>
+    <members>
+        <member name="T:VMManager.Services.DialogService">
+            <summary>
+            Console-based fallback dialog service for headless environments.
+            </summary>
+        </member>
+        <member name="T:VMManager.Services.ExportRestoreService">
+            <summary>
+            Provides PowerShell-based implementation for exporting, restoring, and managing Hyper-V VMs remotely.
+            </summary>
+        </member>
+        <member name="T:VMManager.Services.HostConfigService">
+            <summary>
+            Concrete service for managing saved host configurations using persistent JSON storage.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.HostConfigService.#ctor(VMManager.Core.Interfaces.IFileRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:VMManager.Services.HostConfigService"/> class.
+            </summary>
+            <param name="fileRepository">The file repository for persistence.</param>
+        </member>
+        <member name="M:VMManager.Services.HostConfigService.GetHostsAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.HostConfigService.SaveHostsAsync(System.Collections.Generic.IEnumerable{VMManager.Models.HostInfo})">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.HostConfigService.AddOrUpdateHostAsync(VMManager.Models.HostInfo)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.HostConfigService.RemoveHostAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:VMManager.Services.HostRepository">
+            <summary>
+            Provides file-backed CRUD operations for managing <see cref="T:VMManager.Core.Entities.Host"/> entities.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.HostRepository.#ctor(VMManager.Core.Interfaces.IFileRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:VMManager.Services.HostRepository"/> class.
+            </summary>
+            <param name="fileRepository">File repository for persistent storage.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="fileRepository"/> is null.</exception>
+        </member>
+        <member name="M:VMManager.Services.HostRepository.GetAllAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.HostRepository.AddAsync(VMManager.Core.Entities.Host)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.HostRepository.UpdateAsync(VMManager.Core.Entities.Host)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.HostRepository.RemoveAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:VMManager.Services.Infrastructure.JsonFileRepository">
+            <summary>
+            Provides thread-safe JSON-based file persistence for application data.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.JsonFileRepository.ReadAsync``1(System.String)">
+            <summary>
+            Reads and deserializes an object from a JSON file.
+            </summary>
+            <typeparam name="T">The type of object to deserialize.</typeparam>
+            <param name="path">The file path to read from.</param>
+            <returns>The deserialized object or null if the file doesn't exist.</returns>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.JsonFileRepository.WriteAsync``1(System.String,``0)">
+            <summary>
+            Serializes and writes an object to a JSON file.
+            </summary>
+            <typeparam name="T">The type of object to serialize.</typeparam>
+            <param name="path">The file path to write to.</param>
+            <param name="content">The object to serialize.</param>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.JsonFileRepository.ExistsAsync(System.String)">
+            <summary>
+            Determines if a file exists at the specified path.
+            </summary>
+            <param name="path">The file path to check.</param>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.JsonFileRepository.Dispose">
+            <summary>
+            Releases all unmanaged resources held by this instance.
+            </summary>
+        </member>
+        <member name="T:VMManager.Services.Infrastructure.LanguageService">
+            <summary>
+            Service for managing the application's localization and culture settings.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.LanguageService.#ctor(VMManager.Core.Interfaces.IFileRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:VMManager.Services.Infrastructure.LanguageService"/> class.
+            </summary>
+            <param name="repo">The file repository for persisting selected culture.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="repo"/> is null.</exception>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.LanguageService.GetAvailableCultures">
+            <summary>
+            Gets the list of cultures supported by the application.
+            </summary>
+            <returns>An enumerable of available <see cref="T:System.Globalization.CultureInfo"/> objects.</returns>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.LanguageService.GetCurrentCulture">
+            <summary>
+            Gets the currently active thread culture.
+            </summary>
+            <returns>The current <see cref="T:System.Globalization.CultureInfo"/>.</returns>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.LanguageService.SetCultureAsync(System.Globalization.CultureInfo)">
+            <summary>
+            Sets the culture for the current thread and saves it persistently.
+            </summary>
+            <param name="culture">The culture to set.</param>
+            <returns>A task representing the asynchronous operation.</returns>
+            <exception cref="T:System.ArgumentNullException">Thrown if <paramref name="culture"/> is null.</exception>
+        </member>
+        <member name="T:VMManager.Services.Infrastructure.PowerShellService">
+            <summary>
+            Executes PowerShell scripts with parameters and returns output and error lines.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.PowerShellService.InvokeAsync(System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <inheritdoc />
+        </member>
+        <member name="T:VMManager.Services.Infrastructure.ThemeService">
+            <summary>
+            Provides methods to manage and persist the application's UI theme settings.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.ThemeService.#ctor(VMManager.Core.Interfaces.IFileRepository)">
+            <summary>
+            Initializes a new instance of the <see cref="T:VMManager.Services.Infrastructure.ThemeService"/> class.
+            </summary>
+            <param name="repository">The file repository used to persist theme settings.</param>
+            <exception cref="T:System.ArgumentNullException">Thrown if repository is null.</exception>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.ThemeService.GetAvailableThemes">
+            <summary>
+            Returns a list of supported themes.
+            </summary>
+            <returns>A list of theme names.</returns>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.ThemeService.GetCurrentTheme">
+            <summary>
+            Returns the currently active theme.
+            </summary>
+            <returns>The name of the currently applied theme.</returns>
+        </member>
+        <member name="M:VMManager.Services.Infrastructure.ThemeService.SetThemeAsync(System.String)">
+            <summary>
+            Persists the selected theme asynchronously.
+            </summary>
+            <param name="theme">The theme to set (e.g., "Light", "Dark").</param>
+            <returns>A task representing the asynchronous operation.</returns>
+            <exception cref="T:System.ArgumentException">Thrown if theme is null or empty.</exception>
+        </member>
+        <member name="T:VMManager.Services.Infrastructure.VmControlService">
+            <summary>
+            Real implementation of IVmControlService using PowerShell and Hyper-V.
+            </summary>
+        </member>
+        <member name="T:VMManager.Services.Logger">
+            <summary>
+            Simple, thread-safe logger that logs to console and daily rotating log file.
+            </summary>
+        </member>
+        <member name="T:VMManager.Services.Repositories.FileRepository">
+            <summary>
+            Implements file-based storage using JSON serialization.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Repositories.FileRepository.ReadAsync``1(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Repositories.FileRepository.WriteAsync``1(System.String,``0)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Repositories.FileRepository.ExistsAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:VMManager.Services.Scheduling.BackupJobWorker">
+            <summary>
+            Background worker for polling and executing due backup jobs every 15 minutes.
+            </summary>
+        </member>
+        <member name="T:VMManager.Services.Scheduling.BackupScheduler">
+            <summary>
+            Handles scheduling and execution of backup jobs.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Scheduling.BackupScheduler.Initialize(System.Double)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.BackupScheduler.GetScheduledJobsAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.BackupScheduler.SaveJobsAsync(System.Collections.Generic.IEnumerable{VMManager.Models.ScheduledJob})">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.BackupScheduler.ScheduleBackupAsync(VMManager.Models.HostInfo)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.BackupScheduler.RunJobNowAsync(VMManager.Models.ScheduledJob)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.BackupScheduler.Stop">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.BackupScheduler.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="T:VMManager.Services.Scheduling.ScriptBasedExportRestoreService">
+            <summary>
+            PowerShell-based implementation of <see cref="T:VMManager.Services.Interfaces.IExportRestoreService"/>.
+            Handles VM lifecycle operations by invoking native PowerShell scripts.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.Scheduling.ScriptBasedExportRestoreService.ExportVMAsync(System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.ScriptBasedExportRestoreService.RestoreVMAsync(System.String,System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.ScriptBasedExportRestoreService.StartVMAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.ScriptBasedExportRestoreService.StopVMAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.ScriptBasedExportRestoreService.RestartVMAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.ScriptBasedExportRestoreService.ConnectConsoleAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.ScriptBasedExportRestoreService.ExportAllVMsOnHostAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.ScriptBasedExportRestoreService.ExportAllVMsOnHostAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Services.Scheduling.ScriptBasedExportRestoreService.ValidateHostAndVm(System.String,System.String)">
+            <summary>
+            Validates that both host and VM names are provided.
+            </summary>
+        </member>
+        <member name="T:VMManager.Services.SettingsManager">
+            <summary>
+            Provides persistent storage and access to application-wide configuration settings.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.SettingsManager.Load">
+            <summary>
+            Loads the settings file or initializes defaults if invalid.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.SettingsManager.Save">
+            <summary>
+            Saves the current settings object to disk.
+            </summary>
+        </member>
+        <member name="M:VMManager.Services.SettingsManager.EnsureSettingsInitialized">
+            <summary>
+            Defensive check to ensure _settings is initialized.
+            </summary>
+        </member>
+    </members>
+</doc>

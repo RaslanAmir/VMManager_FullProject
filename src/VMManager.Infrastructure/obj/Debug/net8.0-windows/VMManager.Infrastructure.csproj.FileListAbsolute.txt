@@ -1,0 +1,6 @@
+C:\GitHub\VMManager_FullProject\src\VMManager.Infrastructure\obj\Debug\net8.0-windows\VMManager.Infrastructure.csproj.AssemblyReference.cache
+C:\GitHub\VMManager_FullProject\src\VMManager.Infrastructure\obj\Debug\net8.0-windows\VMManager.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitHub\VMManager_FullProject\src\VMManager.Infrastructure\obj\Debug\net8.0-windows\VMManager.Infrastructure.AssemblyInfoInputs.cache
+C:\GitHub\VMManager_FullProject\src\VMManager.Infrastructure\obj\Debug\net8.0-windows\VMManager.Infrastructure.AssemblyInfo.cs
+C:\GitHub\VMManager_FullProject\src\VMManager.Infrastructure\obj\Debug\net8.0-windows\VMManager.Infrastructure.csproj.CoreCompileInputs.cache
+C:\GitHub\VMManager_FullProject\src\VMManager.Infrastructure\obj\Debug\net8.0-windows\VMManager.Infrastructure.sourcelink.json

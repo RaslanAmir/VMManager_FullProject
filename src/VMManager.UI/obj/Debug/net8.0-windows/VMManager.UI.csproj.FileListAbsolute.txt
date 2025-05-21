@@ -1,0 +1,6 @@
+C:\GitHub\VMManager_FullProject\src\VMManager.UI\obj\Debug\net8.0-windows\VMManager.UI.csproj.AssemblyReference.cache
+C:\GitHub\VMManager_FullProject\src\VMManager.UI\obj\Debug\net8.0-windows\Themes\Theme.baml
+C:\GitHub\VMManager_FullProject\src\VMManager.UI\obj\Debug\net8.0-windows\App.g.cs
+C:\GitHub\VMManager_FullProject\src\VMManager.UI\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\GitHub\VMManager_FullProject\src\VMManager.UI\obj\Debug\net8.0-windows\VMManager.UI_MarkupCompile.cache
+C:\GitHub\VMManager_FullProject\src\VMManager.UI\obj\Debug\net8.0-windows\VMManager.UI_MarkupCompile.lref

@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>VMManager.Application</name>
+    </assembly>
+    <members>
+        <member name="T:VMManager.Application.Services.BackupService">
+            <summary>
+            Provides functionality to trigger VM backups across all configured hosts.
+            </summary>
+        </member>
+        <member name="M:VMManager.Application.Services.BackupService.#ctor(VMManager.Services.Interfaces.IHostRepository,VMManager.Services.Interfaces.IExportRestoreService,VMManager.Common.Logging.ILoggingService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:VMManager.Application.Services.BackupService"/> class.
+            </summary>
+        </member>
+        <member name="M:VMManager.Application.Services.BackupService.RunBackupOnceAsync">
+            <inheritdoc />
+        </member>
+        <member name="T:VMManager.Application.Services.IBackupService">
+            <summary>
+            Defines operations for initiating backup processes across all configured hosts.
+            </summary>
+        </member>
+        <member name="M:VMManager.Application.Services.IBackupService.RunBackupOnceAsync">
+            <summary>
+            Executes a one-time backup operation for all known virtual machines on all hosts.
+            </summary>
+            <returns>A task that completes when the backup operation finishes.</returns>
+        </member>
+        <member name="T:VMManager.Application.Services.MockHostManagementService">
+            <summary>
+            Mock implementation of IHostManagementService using in-memory storage.
+            Useful for design-time binding and unit testing.
+            </summary>
+        </member>
+        <member name="P:VMManager.Application.Services.MockHostManagementService.Hosts">
+            <summary>
+            In-memory collection of hosts.
+            </summary>
+        </member>
+        <member name="M:VMManager.Application.Services.MockHostManagementService.AddHostAsync(VMManager.Models.HostDto)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Application.Services.MockHostManagementService.UpdateHostAsync(VMManager.Models.HostDto)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Application.Services.MockHostManagementService.RemoveHostAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Application.Services.MockHostManagementService.Clone(VMManager.Models.HostDto)">
+            <summary>
+            Creates a deep clone of a HostDto to isolate state.
+            </summary>
+        </member>
+        <member name="T:VMManager.Application.Services.VmControlService">
+            <summary>
+            Simulated VM control service for testing UI without backend logic.
+            Replace this with the real PowerShell/Hyper-V service in production.
+            </summary>
+        </member>
+        <member name="M:VMManager.Application.Services.VmControlService.GetAllVmStatusAsync">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Application.Services.VmControlService.ShutdownVmAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Application.Services.VmControlService.StartVmAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Application.Services.VmControlService.ConnectVmAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Application.Services.VmControlService.RestartVmAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Application.Services.VmControlService.SnapshotVmAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Application.Services.VmControlService.RestoreSnapshotVmAsync(System.String,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:VMManager.Application.Services.VmControlService.ShutdownHostAsync(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:VMManager.Application.Services.VmOrchestrationService">
+            <summary>
+            Coordinates a safe shutdown of all virtual machines and the host system itself.
+            </summary>
+        </member>
+        <member name="M:VMManager.Application.Services.VmOrchestrationService.#ctor(VMManager.Services.Interfaces.IVmControlService,VMManager.Common.Logging.ILoggingService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:VMManager.Application.Services.VmOrchestrationService"/> class.
+            </summary>
+        </member>
+        <member name="M:VMManager.Application.Services.VmOrchestrationService.GracefulShutdownHostAsync(System.String)">
+            <summary>
+            Gracefully shuts down all VMs on a host, then shuts down the host.
+            </summary>
+        </member>
+        <member name="M:VMManager.Application.Services.VmOrchestrationService.WaitForVmStatusAsync(System.String,System.Collections.Generic.IEnumerable{System.String},System.String,System.String)">
+            <summary>
+            Waits until all specified VMs on a host reach a desired status.
+            </summary>
+        </member>
+        <member name="T:VMManager.Services.Infrastructure.VmControlService">
+            <summary>
+            Real implementation of IVmControlService using PowerShell and Hyper-V.
+            </summary>
+        </member>
+    </members>
+</doc>

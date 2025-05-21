@@ -1,0 +1,15 @@
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\bin\Debug\net8.0-windows\VMManager.Models.deps.json
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\bin\Debug\net8.0-windows\VMManager.Models.dll
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\bin\Debug\net8.0-windows\VMManager.Models.pdb
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\bin\Debug\net8.0-windows\VMManager.Models.xml
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\obj\Debug\net8.0-windows\VMManager.Models.csproj.AssemblyReference.cache
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\obj\Debug\net8.0-windows\VMManager.Models.GeneratedMSBuildEditorConfig.editorconfig
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\obj\Debug\net8.0-windows\VMManager.Models.AssemblyInfoInputs.cache
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\obj\Debug\net8.0-windows\VMManager.Models.AssemblyInfo.cs
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\obj\Debug\net8.0-windows\VMManager.Models.csproj.CoreCompileInputs.cache
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\obj\Debug\net8.0-windows\VMManager.Models.sourcelink.json
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\obj\Debug\net8.0-windows\VMManager.Models.dll
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\obj\Debug\net8.0-windows\refint\VMManager.Models.dll
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\obj\Debug\net8.0-windows\VMManager.Models.xml
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\obj\Debug\net8.0-windows\VMManager.Models.pdb
+C:\GitHub\VMManager_FullProject\src\VMManager.Models\obj\Debug\net8.0-windows\ref\VMManager.Models.dll
